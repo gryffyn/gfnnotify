@@ -1,4 +1,4 @@
-package gfnnotify
+package gfn-notify
 
 import (
 	"bytes"

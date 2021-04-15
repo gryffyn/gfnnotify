@@ -1,3 +1,3 @@
-module git.neveris.one/gryffyn/gfn-notify
+module git.neveris.one/gryffyn/gfnnotify
 
 go 1.16

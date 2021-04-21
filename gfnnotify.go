@@ -8,8 +8,8 @@ import (
 )
 
 type Notifier struct {
-	apptoken string
-	endpoint string
+	AppToken string
+	Endpoint string
 }
 
 type Msg struct {
@@ -26,7 +26,7 @@ type Msg struct {
 func (m *Notifier) SendMarkdownMsg(msg Msg) (int, error) {
 	msg.Extras.ClientDisplay.ContentType = "text/markdown"
 	js, err := json.Marshal(msg)
-	form, err := http.Post(m.endpoint+"/message?token="+m.apptoken, "application/json", bytes.NewBuffer(js))
+	form, err := http.Post(m.Endpoint+"/message?token="+m.AppToken, "application/json", bytes.NewBuffer(js))
 	defer form.Body.Close()
 	return form.StatusCode, err
 }
@@ -37,7 +37,7 @@ func (m *Notifier) SendPlainMsg(msg Msg) (int, error) {
 		"message":  {msg.Message},
 		"priority": {msg.Priority},
 	}
-	form, err := http.PostForm(m.endpoint+"/message?token="+m.apptoken, data)
+	form, err := http.PostForm(m.Endpoint+"/message?token="+m.AppToken, data)
 	defer form.Body.Close()
 	return form.StatusCode, err
 }

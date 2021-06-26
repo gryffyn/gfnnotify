@@ -1,4 +1,4 @@
-package gfnnotify
+package libgotify
 
 import (
 	"bytes"
